@@ -112,7 +112,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="1ad-9Z-HZf"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="WFm-wR-y7G"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sIM-Rs-wbi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
