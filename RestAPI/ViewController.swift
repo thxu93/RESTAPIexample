@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var myDeparture: UITextField!
     @IBOutlet weak var myArrival: UITextField!
     
-    
+    //sets the date to label
     @IBAction func datePickerAction(sender: AnyObject) {
         
         let dateFormatter = NSDateFormatter()
@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }   
+    }
 
 
 }
