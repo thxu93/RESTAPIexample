@@ -56,20 +56,13 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wUh-a1-eIO">
-                                <rect key="frame" x="254" y="525" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Next"/>
-                                <connections>
-                                    <segue destination="1zQ-0o-jKl" kind="modal" id="Bwc-t3-WpQ"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="O0I-xY-0We">
-                                <rect key="frame" x="7" y="483" width="239" height="72"/>
+                                <rect key="frame" x="34" y="483" width="239" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
                                     <action selector="makeTheCall:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N7d-nf-YUd"/>
+                                    <segue destination="1zQ-0o-jKl" kind="modal" id="IEx-0t-9hw"/>
                                 </connections>
                             </button>
                         </subviews>
