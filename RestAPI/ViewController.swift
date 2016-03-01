@@ -72,6 +72,36 @@ class ViewController: UIViewController {
             // now we have the post, let's just print it to prove we can access it
             print("The post is: " + post.description)
             
+            
+            if let legs = post as NSDictionary! {
+                print ("hell")
+             
+                if let offers = legs["offers"] as? NSArray {
+                    print ("fuckin")
+                    print (offers)
+
+                    if let averageTix = offers[0] as? NSDictionary {
+                        print ("right")
+                        print (averageTix)
+                        if let amount = averageTix["averageTotalPricePerTicket"] as? NSDictionary {
+                            print("oh shit you made it")
+                            print (amount)
+                            print ("Almost there")
+                            print (amount["amount"])
+                            if let am = amount["amount"] as? String {
+                                print ("did i get it ??????")
+                                print (am)
+                                print ("you are awesome")
+                            }
+                        }
+                        
+                    }
+                }
+            }
+            
+            
+            
+            
             // the post object is a dictionary
             // so we just access the title using the "title" key
             // so check for a title and print it if we have one
@@ -81,25 +111,6 @@ class ViewController: UIViewController {
         })
         task.resume()
         
-//        let url : String = "http://terminal2.expedia.com/x/mflights/search?departureAirport=" + myDeparture.text! + "&arrivalAirport=" + myArrival.text! + "&departureDate=" + selectedDate.text! + "&childTravelerAge=2&apikey=wc1LMMNRaHdJhHzpLTMdOlNbRSTRsPTU"
-//        print(url)
-//        
-//        var request : NSMutableURLRequest = NSMutableURLRequest()
-//        request.URL = NSURL(string: url)
-//        request.HTTPMethod = "GET"
-//
-//        let call = NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue(), completionHandler:{ (response:NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-//            var error: AutoreleasingUnsafeMutablePointer<NSError?> = nil
-//          let jsonResult: NSDictionary! = NSJSONSerialization.JSONObjectWithData(data, options:NSJSONReadingOptions.MutableContainers, error: &err) as? NSDictionary
-//
-//            if (jsonResult != nil) {
-//                print(jsonResult)s
-//            } else {
-//                // couldn't load JSON, look at error
-//            }
-//            
-//            
-//        })
     }
     
     override func viewDidLoad() {
