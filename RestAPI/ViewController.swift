@@ -16,6 +16,7 @@ class ViewController: UIViewController {
 
     
     @IBOutlet weak var myDeparture: UITextField!
+    
     @IBOutlet weak var myArrival: UITextField!
     
     //sets the date to label
@@ -70,44 +71,68 @@ class ViewController: UIViewController {
                 return
             }
             // now we have the post, let's just print it to prove we can access it
-            print("The post is: " + post.description)
+//            print("The post is: " + post.description)
             
             
-            if let legs = post as NSDictionary! {
-                print ("hell")
+            if let legs = post as NSDictionary! { // grabs every object in the dictionary
              
-                if let offers = legs["offers"] as? NSArray {
-                    print ("fuckin")
-                    print (offers)
-
-                    if let averageTix = offers[0] as? NSDictionary {
-                        print ("right")
-                        print (averageTix)
-                        if let amount = averageTix["averageTotalPricePerTicket"] as? NSDictionary {
-                            print("oh shit you made it")
-                            print (amount)
-                            print ("Almost there")
-                            print (amount["amount"])
-                            if let am = amount["amount"] as? String {
-                                print ("did i get it ??????")
-                                print (am)
-                                print ("you are awesome")
+                if let offers = legs["offers"] as? NSArray { // We get all the offers
+                    
+                        var ticketPrices = [String]()
+                        
+                        for (var i = 0; i < offers.count; i++) {
+                            
+                            // For each offer we grab the ticket price information
+                            if let avgPrice = offers[i] as? NSDictionary {
+                                
+                                // We grab the object called averageTotalPricePerTicket
+                                if let avgPrice = avgPrice["averageTotalPricePerTicket"] as? NSDictionary {
+                                    
+                                    // We grab the value of amount of the ticket price. amount is the key
+                                    if let amount = avgPrice["amount"] as? NSString {
+                                        
+                                        // We add the price to our array
+                                        ticketPrices.append(amount as String)
+                                    }
+                                }
                             }
                         }
+                        // Print the contents of the array, this is all the ticket prices we got back
+                        for (var k = 0; k < ticketPrices.count; k++) {
+//                            print(ticketPrices[k])
+                        }
                         
+                        // Finds the cheapest ticket
+                        var min = 999999.00;
+                        var location = ticketPrices[0];
+                        var m = 0;
+                    
+                        for (var l = 0; l < ticketPrices.count; l++) {
+
+                            let x = Double(ticketPrices[l])!
+      
+                            if (x < min) {
+                                min = x
+                                location = ticketPrices[l]
+                                m = l;
+                            }
+                        }
+                    
+                        print("Cheapest ticket price: ")
+                        print(location) //gets the price of that flight - one way
+                        print((offers[m]["detailsUrl"]) as! String) // prints the details url to that flight, Note: only does one way
+                        print((offers[m]["seatsRemaining"] as! Int),  "Seats Left!"); // prints out how many seats are remaining
                     }
                 }
-            }
             
-            
-            
-            
+            /** I don't think we need this statement */
+
             // the post object is a dictionary
             // so we just access the title using the "title" key
             // so check for a title and print it if we have one
-            if let postTitle = post["title"] as? String {
-                print("The title is: " + postTitle)
-            }
+//            if let postTitle = post["title"] as? String {
+//                print("The title is: " + postTitle)
+//            }
         })
         task.resume()
         
